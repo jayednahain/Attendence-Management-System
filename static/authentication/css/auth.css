@@ -1,0 +1,14 @@
+.center_div {
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+}
+
+.login_div_position
+{
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    margin-top: 10%;
+
+}

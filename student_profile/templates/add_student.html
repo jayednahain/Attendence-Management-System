@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+    <h1> add student here</h1>
+
+    <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <br>
+
+    <button class="btn btn-dark">Create Student</button>
+
+    </form>
+
+    <input type="text" class="form-controll" placeholder="Type Place name" id="search_id">
+
+    <script>
+        var searchInput = 'search_id';
+
+        $(document).ready(function () {
+         var autocomplete;
+         autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+          types: ['geocode'],
+          /*componentRestrictions: {
+           country: "USA"
+          }*/
+         });
+
+         google.maps.event.addListener(autocomplete, 'place_changed', function () {
+          var near_place = autocomplete.getPlace();
+         });
+        });
+        </script>
+
+{% endblock content %}

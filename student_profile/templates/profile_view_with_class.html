@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+    <div class="container div_one">
+        <div class="jumbotron">
+
+            <div class="row">
+              <div class="col-sm-4">
+                  <img class="profile_image" src="{% static 'Django_blog/Images/defult_profile_picture.jpg' %}">
+              </div>
+              <div class="col-sm-8 profile_bio_padding">
+                  <h1 class="display-4">{{ students.name }}</h1>
+                  <table class="table profile_font_size">
+                      <tbody>
+                      <tr>
+                          <td class="col-sm-4">ID</td>
+                          <td>{{ students.student_id }}</td>
+                      </tr>
+                      <tr>
+                          <td class="col-sm-4">Email</td>
+                          <td>{{ students.email }}</td>
+                      </tr>
+                      <tr>
+                          <td class="col-sm-4">Phone Number</td>
+                          <td>{{ students.phone_number }}</td>
+                      </tr>
+                      <tr>
+                          <td class="col-sm-4"><a class="btn btn-outline-dark btn-sm" href="{% url 'update_innformation' students.pk %}">Update Profile</a></td>
+                          <td><a class="btn btn-outline-dark btn-sm" href="{% url 'delete_student_link' students.pk %}">Remove Student</a></td>
+
+                      </tr>
+
+
+                      </tbody>
+                  </table>
+
+              </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+
+
+
+
+
+{% endblock content %}

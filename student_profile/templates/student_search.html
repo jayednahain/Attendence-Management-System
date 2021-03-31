@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+    <form>
+        <label for="student_name">Student Name</label>
+        <input type="text" name="student_name" id="student_name">
+    </form>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script>
+    $(function () {
+        $("#student_name").autocomplete({
+
+            //autocomplete is a functions method
+            //#student name is the id filed on the particular search box !
+
+            source: '{% url 'search_by_name_link' %}',
+            //the link source add from urls.py !
+            minLength: 2
+            //the minimum latter we type for the it will suggest name !
+        });
+
+        $("#student_id").autocomplete({
+
+            //autocomplete is a functions method
+            //#student name is the id filed on the particular search box !
+
+            source: '{% url 'search_by_id_link' %}',
+            //the link source add from urls.py !
+            minLength: 1
+            //the minimum latter we type for the it will suggest name !
+        });
+
+
+    });
+</script>
+
+
+
+
+
+{% endblock content %}

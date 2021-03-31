@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+    <div class="container center_div login_div_position">
+        <div class="jumbotron ">
+            <h1 class="display-4">Login Page</h1>
+
+            <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+                <br>
+
+            <button class="btn btn-dark">Log in</button>
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock content %}

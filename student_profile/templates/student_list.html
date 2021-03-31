@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock title %}
+
+
+{% block content %}
+<h1>Student list</h1>
+<ul>
+
+{% for students in object_list %}
+    <li>
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-2">
+                    <img class="rounded-3" src="{% static 'Django_blog/Images/defult_profile_picture.jpg' %}" width="150" height="150">
+                </div>
+                <div class="col-md-10">
+                  <div class="card-body">
+
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <h5 class="card-title">{{ students.name }}</h5>
+
+                              <a class="btn btn-outline-dark btn-sm" href="{% url 'profile_view_with_class_link' students.pk %}">View Profile</a>
+                              <a class="btn btn-outline-dark btn-sm" href="{% url 'update_innformation' students.pk %}">Update Profile</a>
+
+
+                              <hr class="my-2">
+                              <table class="table table-sm">
+                                  <tbody>
+                                    <tr>
+                                      <td>ID</td>
+                                      <td>{{ students.student_id }}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Email</td>
+                                      <td>{{ students.email }}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Phone Number</td>
+                                      <td>{{ students.phone_number }}</td>
+                                    </tr>
+                                  <tr>
+                                      <td>Record Date</td>
+                                      <td>{{ students.student_add_data }}</td>
+                                    </tr>
+
+                                  </tbody>
+                                </table>
+                          </div>
+
+                        </div>
+
+                      <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted"> </small></p>
+                  </div>
+                </div>
+    </li>
+{% endfor %}
+
+
+</ul>
+
+
+
+{% endblock content %}
