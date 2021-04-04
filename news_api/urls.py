@@ -5,5 +5,7 @@ from .import views
 
 urlpatterns = [
 
-    path('scarpnews/',views.scarp_news, name="scarp_news_link")
+    path('scarpnews/',views.scarp_news, name="scarp_news_link"),
+    path('tribunenews/',views.trebune_news, name="tribune_news_link"),
+
 ]
