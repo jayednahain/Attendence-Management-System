@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'authentication',
     'student_profile',
     'weather_condition',
-    'news_api'
+    'news_api',
+    'attendance'
 ]
 
 MIDDLEWARE = [

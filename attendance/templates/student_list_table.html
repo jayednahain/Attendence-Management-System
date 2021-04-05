@@ -1,0 +1,17 @@
+{% extends 'attendance_base.html' %}
+
+{% block title %}
+
+{% endblock title %}
+
+
+
+
+{% block content %}
+    {% for student in Students %}
+        <p>{{ student.name }}</p>
+    {% endfor %}
+
+
+
+{% endblock content %}

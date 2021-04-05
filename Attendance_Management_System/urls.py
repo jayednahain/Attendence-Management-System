@@ -11,8 +11,9 @@ from  news_api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('student_profile.urls')),
+    path('off/',include('student_profile.urls')),
     path('members/',include('django.contrib.auth.urls')),
     path('members/',include('authentication.urls')),
-    path('news/',include('news_api.urls'))
+    path('news/',include('news_api.urls')),
+    path('',include('attendance.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
