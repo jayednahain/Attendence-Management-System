@@ -15,31 +15,20 @@ def student_sql_list(request):
 def export(request):
    #return HttpResponse('hellow')
 
-   #response = HttpResponse(content_type="text/csv")
+   response = HttpResponse(content_type="text/csv")
 
    #taking the reponse from data base
-   #writer_csv = csv.writer(response)
-   #writer_csv.writerow(['Student_id','Student_name'])
+   writer_csv = csv.writer(response)
+   writer_csv.writerows(['Student_id','Student_name'])
+
+   for student in Students.objects.all().values_list('student_id','name'):
+      writer_csv.writerow(student)
+
+   response['Content-Disposition'] ='attachment; filename="records.csv'
 
 
-   with open('records.csv','w', newline='') as csvFile:
-      for student in Students.objects.all().values_list('student_id', 'name'):
-         student_list = list(student)
-         writer = csv.writer(csvFile)
-         #writer = (['Student_id','Student_name'])
 
-         writer.writerows(student_list)
-         #print(type(student_list),"|",student_list)
-   #csvFile.close()
-   for student in Students.objects.all().values_list('student_id', 'name'):
-      student_list = list(student)
-      writer = csv.writer(csvFile)
-      # writer = (['Student_id','Student_name'])
-
-      writer.writerows(student_list)
-
-
-   return HttpResponse('complete')
+   return response
 
 
 

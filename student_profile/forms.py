@@ -10,7 +10,7 @@ from .models import Students
 class CreateStudentForm(forms.ModelForm):
    class Meta:
       model = Students
-      fields = ('name','student_id','phone_number','email','author','student_address')
+      fields = ('name','student_id','phone_number','email','author','student_address','local_guardian_name','local_guardian_phone','local_guardian_address')
 
 
 
@@ -45,6 +45,22 @@ class CreateStudentForm(forms.ModelForm):
          'placeholder': " Type Address",
       }
 
+      local_guardian_name_style = {
+         'class': 'form-control',
+         'placeholder': "Type local",
+
+      }
+      local_guardian_phone_style = {
+         'class': 'form-control',
+         'placeholder': "Type title",
+
+      }
+      local_guardian_address_style = {
+         'class': 'form-control',
+         'placeholder': "Type title",
+
+      }
+
       widgets={
          'name':forms.TextInput(attrs=name_style),
          'student_id':forms.TextInput(attrs=student_id_style),
@@ -52,8 +68,14 @@ class CreateStudentForm(forms.ModelForm):
          'email': forms.TextInput(attrs=email_style),
          #'author': forms.TextInput(attrs=author_style),
          'author':forms.Select(attrs=author_style),
-         'student_address':forms.TextInput(attrs=student_address_style)
+         'student_address':forms.TextInput(attrs=student_address_style),
+         'local_guardian_name':forms.TextInput(attrs=local_guardian_name_style),
+         'local_guardian_phone':forms.TextInput(attrs=local_guardian_phone_style),
+         'local_guardian_address':forms.TextInput(attrs=local_guardian_address_style)
       }
+
+
+
 
 class UpdateStudentInformation(forms.ModelForm):
    class Meta:

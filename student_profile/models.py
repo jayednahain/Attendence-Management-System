@@ -15,6 +15,10 @@ class Students(models.Model):
    email =models.EmailField(max_length=30,blank=False)
    student_add_data = models.DateField(auto_now_add=True)
    student_address = models.CharField(max_length=40,default="no address")
+   local_guardian_name = models.CharField(max_length=40,default="no address")
+   local_guardian_address= models.CharField(max_length=40,default="no address")
+   local_guardian_phone= models.CharField(max_length=40,default="no address")
+
 
    '''
    
