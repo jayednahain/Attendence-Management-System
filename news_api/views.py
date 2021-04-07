@@ -18,6 +18,8 @@ soup_div = bs(html,'html.parser')
 
 
 
+
+
 def scarp_news(request):
    filter_by = {
       'class': 'text'

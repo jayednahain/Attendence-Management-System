@@ -97,7 +97,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'attendance_management',
+        'NAME': 'attendance_management_system',
         'USER':'root',
         'PASSWORD':'testsql'
     }

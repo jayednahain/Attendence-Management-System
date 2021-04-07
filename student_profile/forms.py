@@ -1,8 +1,13 @@
 from django import forms
 from .models import Students
+from .models import Department
 
 
+dept_choise = Department.objects.all().values_list('dept_title','dept_title')
 
+dept_choise_list=[]
+for item in dept_choise:
+   dept_choise_list.append(item)
 
 
 
@@ -10,68 +15,24 @@ from .models import Students
 class CreateStudentForm(forms.ModelForm):
    class Meta:
       model = Students
-      fields = ('name','student_id','phone_number','email','author','student_address','local_guardian_name','local_guardian_phone','local_guardian_address')
+      fields = ('name','student_id','phone_number','stundet_email','department','author','student_address','local_guardian_name','local_guardian_phone','local_guardian_address')
 
-
-
-      name_style={
-         'class': 'form-control',
-         'placeholder': "Type title",
-
-      }
-      student_id_style={
-         'class': 'form-control',
-         'placeholder': "Type Title Page"
-      }
-      phone_number_style ={
-         'class': 'form-control',
-         'value':'',
-         'id':'author_filed'
-      }
-
-      email_style={
-         'class': 'form-control',
-         'placeholder': "type here full post.."
-      }
-      author_style = {
-         'class': 'form-control',
-         'value': '',
-         'id': 'author_filed',
-         'type': 'hidden'
-
-      }
-      student_address_style={
-         'class': 'form-control',
-         'placeholder': " Type Address",
-      }
-
-      local_guardian_name_style = {
-         'class': 'form-control',
-         'placeholder': "Type local",
-
-      }
-      local_guardian_phone_style = {
-         'class': 'form-control',
-         'placeholder': "Type title",
-
-      }
-      local_guardian_address_style = {
-         'class': 'form-control',
-         'placeholder': "Type title",
-
-      }
 
       widgets={
-         'name':forms.TextInput(attrs=name_style),
-         'student_id':forms.TextInput(attrs=student_id_style),
-         'phone_number': forms.TextInput(attrs=phone_number_style),
-         'email': forms.TextInput(attrs=email_style),
-         #'author': forms.TextInput(attrs=author_style),
-         'author':forms.Select(attrs=author_style),
-         'student_address':forms.TextInput(attrs=student_address_style),
-         'local_guardian_name':forms.TextInput(attrs=local_guardian_name_style),
-         'local_guardian_phone':forms.TextInput(attrs=local_guardian_phone_style),
-         'local_guardian_address':forms.TextInput(attrs=local_guardian_address_style)
+         'name':forms.TextInput(attrs={'class': 'form-control'}),
+         'student_id':forms.TextInput(attrs={'class': 'form-control'}),
+         'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+         'stundet_email':forms.TextInput(attrs={'class': 'form-control'}),
+
+
+
+         'author':forms.Select(attrs={'class': 'form-control'}),
+         'department':forms.Select(choices=dept_choise_list,attrs={'class': 'form-control'}),
+         'student_address':forms.TextInput(attrs={'class': 'form-control'}),
+
+         'local_guardian_name':forms.TextInput(attrs={'class': 'form-control'}),
+         'local_guardian_phone':forms.TextInput(attrs={'class': 'form-control'}),
+         'local_guardian_address':forms.TextInput(attrs={'class': 'form-control'})
       }
 
 
@@ -80,47 +41,21 @@ class CreateStudentForm(forms.ModelForm):
 class UpdateStudentInformation(forms.ModelForm):
    class Meta:
       model = Students
-      fields = ('name','student_id','phone_number','email','author','student_address')
+      fields = ('name','student_id','phone_number','department','stundet_email','author','student_address','local_guardian_name','local_guardian_phone','local_guardian_address')
 
-
-
-      name_style={
-         'class': 'form-control',
-         'placeholder': "Type title",
-
-      }
-      student_id_style={
-         'class': 'form-control',
-         'placeholder': "Type Title Page"
-      }
-      phone_number_style ={
-         'class': 'form-control',
-         'value':'',
-         'id':'author_filed'
-      }
-
-      email_style={
-         'class': 'form-control',
-         'placeholder': "type here full post.."
-      }
-      author_style = {
-         'class': 'form-control',
-         'value': '',
-         'id': 'author_filed',
-         'type': 'hidden'
-
-      }
-      student_address_style = {
-         'class': 'form-control',
-         'placeholder': " Type Address",
-      }
 
       widgets={
-         'name':forms.TextInput(attrs=name_style),
-         'student_id':forms.TextInput(attrs=student_id_style),
-         'phone_number': forms.TextInput(attrs=phone_number_style),
-         'email': forms.TextInput(attrs=email_style),
-         #'author': forms.TextInput(attrs=author_style),
-         'author':forms.Select(attrs=author_style),
-         'student_address': forms.TextInput(attrs=student_address_style)
+         'name':forms.TextInput(attrs={'class': 'form-control'}),
+         'student_id':forms.TextInput(attrs={'class': 'form-control'}),
+         'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+         'stundet_email':forms.TextInput(attrs={'class': 'form-control'}),
+
+
+         'department':forms.Select(choices=dept_choise_list,attrs={'class': 'form-control'}),
+         'author':forms.Select(attrs={'class': 'form-control'}),
+
+         'student_address': forms.TextInput(attrs={'class': 'form-control'}),
+         'local_guardian_name': forms.TextInput(attrs={'class': 'form-control'}),
+         'local_guardian_phone': forms.TextInput(attrs={'class': 'form-control'}),
+         'local_guardian_address': forms.TextInput(attrs={'class': 'form-control'})
       }

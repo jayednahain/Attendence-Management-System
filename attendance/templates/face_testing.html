@@ -8,6 +8,11 @@
 
 
 {% block content %}
+    <form action="{% url 'take_image_link' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-dark">click</button>
+
+    </form>
 
 
 

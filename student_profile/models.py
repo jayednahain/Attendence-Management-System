@@ -5,36 +5,39 @@ from datetime import datetime,date
 
 # Create your models here.
 
+class Department(models.Model):
+   dept_title = models.CharField(max_length=50)
+
+   def __str__(self):
+      return self.dept_title
+
+    #after creating ! new data will pops up in specific page !
+   def get_absolute_url(self):
+      return reverse('home_link')
+
+
+
 class Students(models.Model):
 
    author = models.ForeignKey(User,on_delete=models.CASCADE)
    #------------------------------------------------------
    name = models.CharField(max_length=30, blank=False)
    student_id = models.CharField(max_length=30, blank=False)
+   department = models.CharField(max_length=30,default='Uncataegorize')
+
    phone_number = models.CharField(max_length=30,blank=False)
-   email =models.EmailField(max_length=30,blank=False)
+   stundet_email = models.CharField(max_length=30,blank=False)
+
+
    student_add_data = models.DateField(auto_now_add=True)
-   student_address = models.CharField(max_length=40,default="no address")
-   local_guardian_name = models.CharField(max_length=40,default="no address")
-   local_guardian_address= models.CharField(max_length=40,default="no address")
-   local_guardian_phone= models.CharField(max_length=40,default="no address")
+   student_address = models.CharField(max_length=40,blank=False)
+   local_guardian_name = models.CharField(max_length=40,blank=False)
+   local_guardian_address= models.CharField(max_length=40,blank=False)
+   local_guardian_phone= models.CharField(max_length=40,blank=False)
 
 
-   '''
-   
-      address =models.CharField(max_length=30,blank=False)
-      blood_group = models.CharField(max_length=10,blank=False)
-   
-   '''
 
 
-   #------------------------------------------
-   '''
-      local_guardian_name = models.CharField(max_length=30)
-      local_guardian_phone = models.CharField(max_length=30,blank=False)
-      local_guardian_name
-   
-   '''
 
    class Meta:
       ordering = ['-id']
